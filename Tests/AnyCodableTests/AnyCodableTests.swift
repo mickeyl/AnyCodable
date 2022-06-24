@@ -23,9 +23,12 @@ class AnyCodableTests: XCTestCase {
         let json = """
         {
             "boolean": true,
+            "booleanString": "true",
             "integer": 42,
             "double": 3.141592653589793,
             "string": "string",
+            "stringInteger": "100",
+            "stringDouble": "99.99",
             "array": [1, 2, 3],
             "nested": {
                 "a": "alpha",
@@ -43,6 +46,9 @@ class AnyCodableTests: XCTestCase {
         XCTAssertEqual(dictionary["integer"]?.value as! Int, 42)
         XCTAssertEqual(dictionary["double"]?.value as! Double, 3.141592653589793, accuracy: 0.001)
         XCTAssertEqual(dictionary["string"]?.value as! String, "string")
+        XCTAssertEqual(dictionary["booleanString"]?.value as! String, "true")
+        XCTAssertEqual(dictionary["stringInteger"]?.value as! String, "100")
+        XCTAssertEqual(dictionary["stringDouble"]?.value as! String, "99.99")
         XCTAssertEqual(dictionary["array"]?.value as! [Int], [1, 2, 3])
         XCTAssertEqual(dictionary["nested"]?.value as! [String: String], ["a": "alpha", "b": "bravo", "c": "charlie"])
         XCTAssertEqual(dictionary["null"]?.value as! NSNull, NSNull())

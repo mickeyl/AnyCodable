@@ -57,16 +57,16 @@ extension _AnyDecodable {
             #else
                 self.init(Optional<Self>.none)
             #endif
-        } else if let bool = try? container.decode(Bool.self) {
-            self.init(bool)
+        } else if let string = try? container.decode(String.self) {
+            self.init(string)
         } else if let int = try? container.decode(Int.self) {
             self.init(int)
         } else if let uint = try? container.decode(UInt.self) {
             self.init(uint)
         } else if let double = try? container.decode(Double.self) {
             self.init(double)
-        } else if let string = try? container.decode(String.self) {
-            self.init(string)
+        } else if let bool = try? container.decode(Bool.self) {
+            self.init(bool)
         } else if let array = try? container.decode([AnyDecodable].self) {
             self.init(array.map { $0.value })
         } else if let dictionary = try? container.decode([String: AnyDecodable].self) {
